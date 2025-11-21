@@ -28,8 +28,6 @@ GameHub is a comprehensive platform for mobile gamers to discover, download, and
 ## Live URL
 (https://app.netlify.com/projects/cheerful-hamster-d6b411/deploys/69207cf3b97085ff9bd84d3f)
 
-Local host: http://localhost:5173/
-
 ## Key Features
 - 🎮 **Curated Game Collection**: Hand-picked mobile games from top developers.  
 - ⭐ **Quality Ratings**: Real user reviews you can trust.  
