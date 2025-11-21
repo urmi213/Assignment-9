@@ -1,0 +1,123 @@
+[
+  {
+    "id": "1",
+    "title": "PUBG Mobile",
+    "coverPhoto": "/pubg-battlegrounds-19vwb.jpg",
+    "category": "FPS",
+    "downloadLink": "public/pubg-battlegrounds-19vwb.jpg",
+    "description": "Fast-paced battle royale game.",
+    "ratings": "4.5",
+    "developer": "Krafton"
+  },
+  {
+    "id": "2",
+    "title": "Call of Duty: Mobile",
+    "coverPhoto": "/call of duty.webp",
+    "category": "FPS",
+    "downloadLink": "https://www.callofduty.com/mobile",
+    "description": "Classic COD action on mobile.",
+    "ratings": "4.6",
+    "developer": "Activision"
+  },
+  {
+    "id": "3",
+    "title": "Fortnite",
+    "coverPhoto": "/fornite.png",
+    "category": "Battle Royale",
+    "downloadLink": "https://www.epicgames.com/fortnite/en-US/home",
+    "description": "Build, fight, survive.",
+    "ratings": "4.4",
+    "developer": "Epic Games"
+  },
+  {
+    "id": "4",
+    "title": "Minecraft",
+    "coverPhoto": "/Minecraft-house-build-ideas.avif",
+    "category": "Adventure",
+    "downloadLink": "https://www.minecraft.net/",
+    "description": "Create and explore infinite worlds.",
+    "ratings": "4.7",
+    "developer": "Mojang"
+  },
+  {
+    "id": "5",
+    "title": "Asphalt 9",
+    "coverPhoto": "/asphalt.jpg",
+    "category": "Racing",
+    "downloadLink": "https://asphaltlegends.com/",
+    "description": "High-speed arcade racing experience.",
+    "ratings": "4.3",
+    "developer": "Gameloft"
+  },
+  {
+    "id": "6",
+    "title": "Genshin Impact",
+    "coverPhoto": "/genshin-impact.webp",
+    "category": "RPG",
+    "downloadLink": "https://genshin.mihoyo.com/",
+    "description": "Explore a fantasy world with elemental magic.",
+    "ratings": "4.6",
+    "developer": "miHoYo"
+  },
+  {
+    "id": "7",
+    "title": "League of Legends: Wild Rift",
+    "coverPhoto": "/league-of-legends.jpeg",
+    "category": "MOBA",
+    "downloadLink": "https://wildrift.leagueoflegends.com/",
+    "description": "Mobile version of the popular MOBA game.",
+    "ratings": "4.5",
+    "developer": "Riot Games"
+  },
+  {
+    "id": "8",
+    "title": "Clash of Clans",
+    "coverPhoto": "/clash of clans.webp",
+    "category": "Strategy",
+    "downloadLink": "https://supercell.com/en/games/clashofclans/",
+    "description": "Build your village and battle with clans.",
+    "ratings": "4.4",
+    "developer": "Supercell"
+  },
+  {
+    "id": "9",
+    "title": "Among Us",
+    "coverPhoto": "/amnong us.jpeg",
+    "category": "Party",
+    "downloadLink": "https://www.innersloth.com/gameAmongUs.php",
+    "description": "Find the imposter in your spaceship crew.",
+    "ratings": "4.3",
+    "developer": "InnerSloth"
+  },
+  {
+    "id": "10",
+    "title": "FIFA Mobile",
+    "coverPhoto": "/FIFA-Mobile-Update-16.0.01.avif",
+    "category": "Sports",
+    "downloadLink": "https://www.ea.com/games/fifa/fifa-mobile",
+    "description": "Play football anytime, anywhere.",
+    "ratings": "4.2",
+    "developer": "EA Sports"
+  },
+  {
+  "id": "11",
+  "title": "Free Fire",
+  "coverPhoto": "/garena-free-fire_734y.jpg",
+  "category": "Battle Royale",
+  "downloadLink": "https://ff.garena.com/",
+  "description": "Fast-paced survival shooter with unique abilities.",
+  "ratings": "4.3",
+  "developer": "Garena"
+},
+{
+  "id": "12",
+  "title": "Subway Surfers",
+  "coverPhoto": "/Seasonal-Characters-Subway-Surfers.jpg",
+  "category": "Arcade",
+  "downloadLink": "https://sybogames.com/games/subway-surfers/",
+  "description": "Endless running fun with vibrant graphics.",
+  "ratings": "4.5",
+  "developer": "SYBO Games"
+}
+
+]
