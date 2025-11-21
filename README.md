@@ -1,5 +1,5 @@
 
-------------------I am not able to push code to the private                 making it public. I hope you will consider this.
+# I am not able to push code to the private.. Making it public. I hope you will consider this.
 
 
 # React + Vite
@@ -48,4 +48,4 @@ Local host: http://localhost:5173/
 ## Installation
 1. Clone the repository:
    ```bash
-   git clone <your-repo-url>
+   git clone https://github.com/urmi213/Assignment-9.git
