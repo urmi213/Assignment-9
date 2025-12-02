@@ -22,31 +22,39 @@ export function AuthProvider({ children }) {
   const [currentUser, setCurrentUser] = useState(null);
   const [loading, setLoading] = useState(true);
 
+  // Email + Password Signup
   function signup(email, password) {
     return createUserWithEmailAndPassword(auth, email, password);
   }
 
+  // Login
   function login(email, password) {
     return signInWithEmailAndPassword(auth, email, password);
   }
 
+  // Logout
   function logout() {
     return signOut(auth);
   }
 
+  // Update Profile (Email Signup Only)
   function updateUserProfile(profile) {
     return updateProfile(auth.currentUser, profile);
   }
 
+  // Reset Password
   function resetPassword(email) {
     return sendPasswordResetEmail(auth, email);
   }
 
+  // Google Sign-In
   function googleSignIn() {
     const provider = new GoogleAuthProvider();
+    provider.setCustomParameters({ prompt: "select_account" });
     return signInWithPopup(auth, provider);
   }
 
+  // Track logged-in user
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
       setCurrentUser(user);

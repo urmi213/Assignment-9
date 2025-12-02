@@ -1,7 +1,6 @@
 
 # I am not able to push code to the private.. Making it public. I hope you will consider this.
 
-
 # React + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
@@ -26,7 +25,7 @@ If you are developing a production application, we recommend using TypeScript wi
 GameHub is a comprehensive platform for mobile gamers to discover, download, and discuss the best mobile games**. It aims to connect gamers and developers in a community-driven environment with curated game collections, real user ratings, and fast downloads.
 
 ## Live URL
-(https://app.netlify.com/projects/cheerful-hamster-d6b411/deploys/69207cf3b97085ff9bd84d3f)
+(https://cheerful-hamster-d6b411.netlify.app/)
 
 ## Key Features
 - 🎮 **Curated Game Collection**: Hand-picked mobile games from top developers.  
