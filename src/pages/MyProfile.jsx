@@ -1,4 +1,4 @@
-// src/pages/MyProfile.jsx
+
 import { Link } from 'react-router';
 import { useAuth } from '../context/AuthContext';
 

@@ -1,6 +1,8 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router';
 import { useAuth } from '../context/AuthContext';
+import { getRedirectResult, GoogleAuthProvider } from 'firebase/auth';
+import { auth } from '../firebase/firebase.config'; 
 
 export default function Register() {
   const [form, setForm] = useState({
@@ -15,14 +17,29 @@ export default function Register() {
   const [loading, setLoading] = useState(false);
   const [googleLoading, setGoogleLoading] = useState(false);
 
-  const { signup, updateUserProfile, googleSignIn } = useAuth();
+  const { signup, updateUserProfile, googleSignIn, googleSignInRedirect } = useAuth();
   const navigate = useNavigate();
+
+  // Handle redirect result (mobile)
+  useEffect(() => {
+    getRedirectResult(auth)
+      .then((result) => {
+        if (result && result.user) {
+          navigate('/');
+        }
+      })
+      .catch((err) => setError(err.message));
+  }, [navigate]);
 
   const handleChange = e => 
     setForm({ ...form, [e.target.name]: e.target.value });
 
   const validatePassword = pwd =>
-    /[A-Z]/.test(pwd) && /[a-z]/.test(pwd) && pwd.length >= 6;
+    /[A-Z]/.test(pwd) &&
+    /[a-z]/.test(pwd) &&
+    /\d/.test(pwd) &&
+    /[\W_]/.test(pwd) &&
+    pwd.length >= 6;
 
   const handleSubmit = async e => {
     e.preventDefault();
@@ -31,19 +48,17 @@ export default function Register() {
       return setError('Passwords do not match');
 
     if (!validatePassword(form.password))
-      return setError('Password must contain uppercase, lowercase letters and at least 6 chars');
+      return setError('Password must contain uppercase, lowercase, number, special character and at least 6 chars');
 
     try {
       setError('');
       setLoading(true);
 
-      
       await signup(form.email, form.password);
 
-     
       await updateUserProfile({
         displayName: form.name,
-        photoURL: form.photoURL.trim() || 'public/default.jpeg'
+        photoURL: form.photoURL.trim() || '/default.jpeg'
       });
 
       navigate('/');
@@ -59,14 +74,17 @@ export default function Register() {
       setError('');
       setGoogleLoading(true);
 
-      const result = await googleSignIn();
-      const user = result.user;
+      // Detect if mobile
+      const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
 
-      console.log("Google Photo:", user.photoURL); 
-
-     
-
-      navigate('/');
+      if (isMobile) {
+        // Use redirect on mobile
+        await googleSignInRedirect();
+      } else {
+        // Use popup on desktop
+        await googleSignIn();
+        navigate('/');
+      }
     } catch (err) {
       setError(err.message);
     } finally {
@@ -83,62 +101,67 @@ export default function Register() {
           {error && <div className="alert alert-error">{error}</div>}
 
           <form onSubmit={handleSubmit} className="space-y-3">
-            <input 
-              name="name"
-              placeholder="Full Name"
-              className="input input-bordered w-full"
-              value={form.name}
-              onChange={handleChange}
-              required
-            />
+            <fieldset disabled={loading || googleLoading}>
+              <input 
+                name="name"
+                placeholder="Full Name"
+                className="input input-bordered w-full"
+                value={form.name}
+                onChange={handleChange}
+                required
+              />
 
-            <input 
-              name="email"
-              type="email"
-              placeholder="Email"
-              className="input input-bordered w-full"
-              value={form.email}
-              onChange={handleChange}
-              required
-            />
+              <input 
+                name="email"
+                type="email"
+                placeholder="Email"
+                className="input input-bordered w-full"
+                value={form.email}
+                onChange={handleChange}
+                required
+              />
 
-            <input 
-              name="photoURL"
-              type="url"
-              placeholder="Photo URL (optional)"
-              className="input input-bordered w-full"
-              value={form.photoURL}
-              onChange={handleChange}
-            />
+              <input 
+                name="photoURL"
+                type="url"
+                placeholder="Photo URL (optional)"
+                className="input input-bordered w-full"
+                value={form.photoURL}
+                onChange={handleChange}
+              />
 
-            <input 
-              name="password"
-              type="password"
-              placeholder="Password"
-              className="input input-bordered w-full"
-              value={form.password}
-              onChange={handleChange}
-              required
-            />
+              <input 
+                name="password"
+                type="password"
+                placeholder="Password"
+                className="input input-bordered w-full"
+                value={form.password}
+                onChange={handleChange}
+                required
+              />
+              <p className="text-xs text-gray-400">
+                Must contain uppercase, lowercase, number, special char, min 6 chars
+              </p>
 
-            <input 
-              name="confirmPassword"
-              type="password"
-              placeholder="Confirm Password"
-              className="input input-bordered w-full"
-              value={form.confirmPassword}
-              onChange={handleChange}
-              required
-            />
+              <input 
+                name="confirmPassword"
+                type="password"
+                placeholder="Confirm Password"
+                className="input input-bordered w-full"
+                value={form.confirmPassword}
+                onChange={handleChange}
+                required
+              />
 
-            <button type="submit" className="btn btn-primary w-full" disabled={loading}>
-              {loading ? (
-                <>
-                  <span className="loading loading-spinner loading-sm"></span>
-                  Creating Account...
-                </>
-              ) : 'Sign Up'}
-            </button>
+              <button type="submit" className="btn btn-primary w-full mt-2">
+                {loading ? (
+                  <>
+                    <span className="loading loading-spinner loading-sm"></span>
+                    Creating Account...
+                  </>
+                ) : 'Sign Up'}
+              </button>
+            </fieldset>
           </form>
 
           <div className="divider">OR</div>

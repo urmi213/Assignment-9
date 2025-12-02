@@ -1,4 +1,4 @@
-// src/pages/PopularGames.jsx
+
 import { motion } from 'framer-motion';
 import GameCard from '../components/GameCard';
 import games from '../data/data.json';

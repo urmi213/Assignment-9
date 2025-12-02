@@ -43,7 +43,7 @@ export default function Home() {
 
   return (
     <>
-      {/* Banner Slider */}
+      
       <section className="carousel w-full h-96">
         {games.slice(0, 3).map((game, index) => (
           <div key={game.id} id={`slide${index}`} className="carousel-item relative w-full">
@@ -73,7 +73,7 @@ export default function Home() {
         ))}
       </section>
 
-      {/* Games Section */}
+     
       <section className="py-16 px-4 bg-base-200">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-12">
@@ -84,20 +84,20 @@ export default function Home() {
               Discover amazing mobile games
             </p>
             
-            {/* Results count */}
+          
             <div className="text-center mb-4 text-gray-600">
               Showing {gamesToShow.length} of {games.length} games
             </div>
           </div>
 
-          {/* Game Cards Grid */}
+          
           <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
             {gamesToShow.map((game, index) => (
               <GameCard key={game.id} game={game} index={index} />
             ))}
           </div>
 
-          {/* Load More button */}
+          
           {hasMoreGames && (
             <div className="flex justify-center mt-8">
               <button className="btn btn-primary btn-lg" onClick={handleLoadMore}>
@@ -108,7 +108,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Toast Notification */}
+      
       <AnimatePresence>
         {toast.show && (
           <motion.div
@@ -124,7 +124,7 @@ export default function Home() {
         )}
       </AnimatePresence>
 
-      {/* Newsletter */}
+      
       <section className="py-16 bg-gradient-to-r from-indigo-600 to-purple-600">
         <div className="max-w-md mx-auto text-center px-4">
           <motion.div

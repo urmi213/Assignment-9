@@ -1,4 +1,4 @@
-// src/pages/ForgotPassword.jsx
+
 import { useState } from 'react';
 import { Link } from 'react-router';
 import { useAuth } from '../context/AuthContext';

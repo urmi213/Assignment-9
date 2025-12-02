@@ -1,4 +1,3 @@
-// src/contexts/AuthContext.jsx
 import { createContext, useContext, useState, useEffect } from 'react';
 import { 
   signInWithEmailAndPassword, 
@@ -8,7 +7,8 @@ import {
   onAuthStateChanged,
   sendPasswordResetEmail,
   GoogleAuthProvider,
-  signInWithPopup
+  signInWithPopup,
+  signInWithRedirect
 } from 'firebase/auth';
 import { auth } from '../firebase/firebase.config.js';
 
@@ -47,11 +47,18 @@ export function AuthProvider({ children }) {
     return sendPasswordResetEmail(auth, email);
   }
 
-  // Google Sign-In
+  // Google Sign-In (Popup)
   function googleSignIn() {
     const provider = new GoogleAuthProvider();
     provider.setCustomParameters({ prompt: "select_account" });
     return signInWithPopup(auth, provider);
+  }
+
+  // Google Sign-In (Redirect for mobile)
+  function googleSignInRedirect() {
+    const provider = new GoogleAuthProvider();
+    provider.setCustomParameters({ prompt: "select_account" });
+    return signInWithRedirect(auth, provider);
   }
 
   // Track logged-in user
@@ -71,7 +78,8 @@ export function AuthProvider({ children }) {
     logout,
     updateUserProfile,
     resetPassword,
-    googleSignIn
+    googleSignIn,
+    googleSignInRedirect, // <-- new
   };
 
   return (
